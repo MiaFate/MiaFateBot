@@ -22,15 +22,6 @@ const player = new Player(client);
 // To easily access the player
 client.player = player;
 
-// add the trackStart event so when a song will be played this message will be sent
-/*
-client.player.on("trackStart", (message, track) =>
-  message.channel.send(`Now playing ${track.title}...`)
-);
-*/
-//--
-
-//fin musica
 
 const commandFolders = fs.readdirSync("./commands");
 
@@ -64,17 +55,6 @@ for (const folder of eventFolders) {
   }
 }
 
-/*
-const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 
-for (const file of eventFiles) {
-	const event = require(`./events/${file}`);
-	if (event.once) {
-		client.once(event.name, (...args) => event.execute(...args, client));
-	} else {
-		client.on(event.name, (...args) => event.execute(...args, client));
-	}
-}
-*/
 
 client.login(process.env.token);
