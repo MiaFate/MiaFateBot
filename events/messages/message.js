@@ -3,7 +3,7 @@ module.exports = {
   async execute(message, client) {
     const config_prefix = process.env.prefix;
     const Discord = require("discord.js");
-
+    console.log(config_prefix)
     //Get guild database
     let guildDB = await client.data.getGuildDB(message.guild.id).catch((err)=>console.log(err));
 
