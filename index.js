@@ -1,12 +1,18 @@
-require('dotenv').config()
+require("dotenv").config();
 const fs = require("fs");
 
 const Discord = require("discord.js");
-const { prefix } = require("./config.json");
+//const { prefix } = require("./config.json");
 
 const client = new Discord.Client();
+//db
+const MONGOOSE = require("mongoose");
 
-client.prefix = prefix;
+client.data = require("./database/MongoDB");
+
+//
+
+//client.prefix = prefix;
 //comandos
 client.commands = new Discord.Collection();
 //cooldowns
@@ -21,7 +27,6 @@ const player = new Player(client);
 
 // To easily access the player
 client.player = player;
-
 
 const commandFolders = fs.readdirSync("./commands");
 
@@ -55,6 +60,16 @@ for (const folder of eventFolders) {
   }
 }
 
-
+MONGOOSE.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+})
+  .then(() => {
+    console.log("Connected to the Db");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 client.login(process.env.token);
