@@ -17,7 +17,7 @@
     "dotenv": "^10.0.0",
     "ffmpeg-static": "^4.3.0",
     "mongoose": "^5.12.14",
-    "npm-check-updates": "^11.6.0",
+    "npm-check-updates": "^16.7.4",
     "soundcloud-scraper": "^5.0.0",
     "spotify-url-info": "^2.2.3",
     "youtube-sr": "^4.1.4",
